@@ -1,0 +1,89 @@
+;;; * Setup and Accounts
+commodity €
+  note Euros
+  format 1,000.00 €
+  nomarket
+  default
+
+account Assets
+
+account Equity:Opening Balances
+
+; Where it comes:
+account Income:Salary
+
+; WHere it Goes:
+account Expenses
+account Expenses:Charity
+account Expenses:Flat:Rent
+account Expenses:Flat:Others
+account Expenses:Food
+account Expenses:Misc
+
+
+
+;; Unbudgedet (From Funds)
+tag automatic
+
+account Funds:Travel
+= /Expenses:Travel:/
+    (Funds:Travel)                                -1 ; :automatic:
+account Expenses:Travel:19:San Francisco
+account Expenses:Travel:19:35C3
+
+account Funds:Saving
+
+account Funds:Sporadic
+= /Expenses:Sporadic:/
+    (Funds:Sporadic)                              -1 ; :automatic:
+account Expenses:Sporadic:Bahncard
+account Expenses:Sporadic:Insurance
+
+
+;; * Budget
+
+~ Monthly
+    Income:Salary                              -2000 €
+    Expenses:Flat:Rent                        630.00 €
+    Expenses:Flat:Others                       50.00 € ; Electricity
+    Expenses:Flat:Others                  24.95 € ; HTP Internet
+    Expenses:Misc                              ;; Everything else gets into Misc
+    ;; Target for channeling money from the budget into the funds
+    Funds:Saving                              200.00 €  ; We want to channel 200€ every month to a saving fund
+    Funds:Sporadic                           (255 €/12) ; Bahncard
+    Funds:Sporadic                         (52.05 €/12) ; HUK Coburg
+    Funds:Travel                                     0 €  ;
+
+2018/12/31 Opening Balance
+    Assets                                      5000 €
+    Equity:Opening Balances
+    (Funds:Travel)                               675 €
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; * January 2019
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+2019/01/01 My Corporation
+    Assets                                      2000 €
+    Income:Salary
+
+2019/01/02 Rent and Electricity
+    Assets
+    Expenses:Flat:Rent                           630 €
+    Expenses:Flat:Others                          50 €
+
+2019/01/12 Travel to San Francisco
+    Assets
+    Expenses:Travel:19:San Francisco            325.00 €
+
+
+2019/01/31 Closing
+    (Funds:Saving)                               200 €
+    (Funds:Sporadic)                           25.59 €
+
+
+;; Local Variables:
+;; orgstruct-heading-prefix-regexp: ";; "
+;; eval: (orgstruct-mode 1)
+;; End:

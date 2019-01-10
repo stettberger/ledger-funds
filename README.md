@@ -2,7 +2,7 @@ Ledger CLI with Budget and Funds
 ================================
 
 I organize my personal finance with
-[ledger-cli](https://www.ledger-cli.org/) which supports a myriads of
+[ledger-cli](https://www.ledger-cli.org/) which supports a myriad of
 basic features that can be used to build workflows for your financial needs.
 
 One particular useful feature is monthly budgeting. It helps you to

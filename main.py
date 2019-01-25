@@ -41,7 +41,7 @@ widths = [12, 12, 12, 0]
 def print_line(widths, *line):
     lr = ['>', '>', '>', "<"]
     line = [u"{:{}{}}".format(x.decode('utf-8'),l,w) for x,l, w in zip(line, lr, widths)]
-    line[1:] = map(fmt_amount, line[1:])
+    line = map(fmt_amount, line)
     print u" ".join(line)
 
 widths[-1] = max([len(unicode(str(x))) for x in total])
